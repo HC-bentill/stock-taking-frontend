@@ -48,7 +48,7 @@ const TheHeader = () => {
     } else{
       dispatch( setSideMenu(false) );
     } 
-  },[sideMenu])
+  },[])
 
 
   return (

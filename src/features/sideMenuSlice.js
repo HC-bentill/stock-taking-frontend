@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const sideMenuSlice = createSlice({
   name: "sideMenu",
   initialState: {
-    sideMenu: false,
+    sideMenu: null,
   },
   reducers: {
     setSideMenu: (state, action) => {
