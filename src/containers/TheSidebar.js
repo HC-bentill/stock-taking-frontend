@@ -24,13 +24,12 @@ import navigation from './_nav'
 const TheSidebar = () => {
   // const dispatch = useDispatch()
   const sideMenu = useSelector( selectSideMenu )
-  console.log('sidemenu = ', sideMenu );
 
   return (
     <CSidebar
       show={sideMenu}
       minimize={true}
-      colorScheme="light"
+      colorScheme="dark"
       // style={{background:"#261b87"}}
       // onShowChange={dispatch(setSideMenu(true))}
     >

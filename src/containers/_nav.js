@@ -10,11 +10,6 @@ const _nav = [
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
   },
   {
-    _tag: 'CSidebarNavTitle',
-    _children: ['Menu']
-  },
-  //nav item (school)
-  {
     _tag: 'CSidebarNavItem',
     name: 'School',
     to: '/schools',

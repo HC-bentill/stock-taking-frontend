@@ -54,7 +54,7 @@ function View_schools() {
               aria-pressed="true"
             >
               <CIcon size="sm" name="cil-pencil" />
-              <span className="mfs-2">Create New School</span>
+              <span className="mfs-2">Create User</span>
             </CButton>
           </CRow>
           <CCard>

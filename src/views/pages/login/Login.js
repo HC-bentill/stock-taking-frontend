@@ -21,6 +21,7 @@ import CIcon from "@coreui/icons-react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
 import { setLogin, setLogout } from "../../../features/userSlice";
+import './login.scss'
 
 const Login = () => {
   const [username, setUserName] = useState("");
@@ -35,12 +36,12 @@ const Login = () => {
   };
 
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
+    <div className="c-app c-default-layout flex-row align-items-center login_container">
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md="5">
             <CCardGroup>
-              <CCard className="p-4">
+              <CCard className="login_card" >
                 <CCardBody>
                   <CForm onSubmit={handleSubmit} formNoValidate>
                     <h1>Login</h1>

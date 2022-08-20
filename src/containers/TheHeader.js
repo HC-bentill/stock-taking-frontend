@@ -41,13 +41,17 @@ const TheHeader = () => {
     dispatch(setSideMenu(!sideMenu))
   }
 
-  //if component mounts and screen width is more then 992px then sidebar should be true
-  useEffect( () => {
+  const handleWindowWidth = () => {
     if ( window.innerWidth > 992 ) {
       dispatch( setSideMenu(true) );
     } else{
       dispatch( setSideMenu(false) );
     } 
+  }
+
+  //if component mounts and screen width is more then 992px then sidebar should be true
+  useEffect( () => {
+    handleWindowWidth();
   },[])
 
 
