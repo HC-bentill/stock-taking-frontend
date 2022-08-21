@@ -1,1 +1,39 @@
 // Here you can add other styles
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 300;
+    * {
+      font-family: Poppins !important;
+    }
+  } 
+
+@font-face {
+    font-family: "Poppins";
+    src: local("Poppins"),
+      url(../assets/fonts/Poppins-Regular.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-weight: bold;
+    src: local("Poppins"),
+      url(../assets/fonts/Poppins-Bold.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-weight: 500;
+    src: local("Poppins"),
+      url(../assets/fonts/Poppins-Medium.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    font-weight: lighter;
+    src: local("Poppins"),
+      url(../assets/fonts/Poppins-Light.ttf) format("truetype");
+  }
+  

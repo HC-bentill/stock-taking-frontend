@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import {
-  CBadge,
   CCard,
   CCardBody,
   CCardHeader,
@@ -10,75 +9,93 @@ import {
   CRow,
   CPagination,
   CButton,
-  CModal,
-  CModalBody,
-  CModalFooter,
-  CModalHeader,
-  CModalTitle,
-  CForm,
-  CInput,
-  CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
+  CBadge,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import axios from "axios";
 import swal from "sweetalert";
-import usersData from "../users/UsersData";
+import zoneData from "./zoneData";
 
 function View_schools() {
-  const [schoolData, setSchoolData] = useState([]);
-  const [createModal, setCreateModal] = useState(false);
   const history = useHistory();
   const queryPage = useLocation().search.match(/page=([0-9]+)/, "");
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
   const [page, setPage] = useState(currentPage);
-
 
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
   }, [currentPage, page]);
 
   const pageChange = (newPage) => {
-    currentPage !== newPage && history.push(`/schools?page=${newPage}`);
+    currentPage !== newPage && history.push(`/zones?page=${newPage}`);
   };
+
+  const getBadge = (status) => {
+    switch (status) {
+      case "Closed":
+        return "success";
+      case "Assigned":
+        return "warning";
+      case "Unassigned":
+        return "danger";
+      default:
+        return "primary";
+    }
+  };
+
+  const fields = [
+    { key: "name", _style: { width: "40%" } },
+    "registered",
+    { key: "role", _style: { width: "20%" } },
+    { key: "status", _style: { width: "20%" } },
+    {
+      key: "show_details",
+      label: "",
+      _style: { width: "1%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
   return (
     <>
       <CRow>
         <CCol sm={12} md={12}>
           <CRow className="justify-content-end pr-5">
             <CButton
-              to={"/add_school"}
+              to={"/add-zone"}
               className="mb-4 p-2"
               color="primary"
               aria-pressed="true"
             >
               <CIcon size="sm" name="cil-pencil" />
-              <span className="mfs-2">Create User</span>
+              <span className="mfs-2">Create Zone</span>
             </CButton>
           </CRow>
           <CCard>
             <CCardHeader>
-              <h4>Schools</h4>
+              <h4>Zones</h4>
             </CCardHeader>
             <CCardBody>
               <CDataTable
-                items={usersData}
-                fields={[
-                  { key: "name", _classes: "font-weight-bold" },
-                  "registered",
-                  "role",
-                ]}
+                items={zoneData}
+                fields={["name", "supervisor", "range", "status"]}
                 hover
                 clickableRows
-                striped
                 columnFilter
                 tableFilter
                 itemsPerPageSelect
                 sorter
                 itemsPerPage={10}
                 activePage={page}
-                onRowClick={(item) => history.push(`/school/${item.id}`)}
+                onRowClick={(item) => history.push(`/edit-zone/${item.id}`)}
+                scopedSlots={{
+                  status: (item) => (
+                    <td>
+                      <CBadge color={getBadge(item.status)}>
+                        {item.status}
+                      </CBadge>
+                    </td>
+                  ),
+                }}
               />
               <CPagination
                 activePage={page}

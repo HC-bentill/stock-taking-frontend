@@ -2,54 +2,36 @@ import React from 'react'
 import CIcon from '@coreui/icons-react'
 
 const _nav = [
-  //nav item
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
+    icon: 'cilHome',
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'School',
-    to: '/schools',
-    icon: 'cil-puzzle',
+    name: 'Zones',
+    to: '/zones',
+    icon: 'cilCalculator',
   },
-  //nav item (class)
   {
     _tag: 'CSidebarNavItem',
-    name: 'Class',
-    to: '/class',
-    icon: 'cil-pencil',
+    name: 'Fixtures',
+    to: '/fixtures',
+    icon: 'cilTags',
   },
-  //nav item (teacher)
   {
     _tag: 'CSidebarNavItem',
-    name: 'Teacher',
-    to: '#',
-    icon: 'cil-star',
-  },
-  //nav item (student)
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Student',
-    to: '#',
-    icon: 'cil-cursor',
-  },
-   //nav item (User)
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'User',
-    to: '#',
+    name: 'Users',
+    to: '/users',
     icon: 'cil-user',
   },
-  //nav item (roles)
   {
     _tag: 'CSidebarNavItem',
-    name: 'Roles',
-    to: '#',
-    icon: 'cil-user',
-  }
+    name: 'Settings',
+    to: '/settings',
+    icon: 'cilSettings',
+  },
 ]
 
 

@@ -33,65 +33,8 @@ const School = ({ match }) => {
 
   useEffect(() => {}, []);
 
-  async function handleDelete() {
-    await axios
-      .delete(`http://localhost:1337/api/schools/${match.params.id}`)
-      .then((response) => {
-        // Handle success.
-        swal({
-          text: "Record has been deleted successfully !",
-          icon: "success",
-          button: false,
-          timer: 2000,
-        });
-        history.push("/schools");
-        console.log(response);
-      })
-      .catch((err) => {
-        // Handle error.
-        swal({
-          text: `An error occurred !`,
-          icon: "error",
-          button: false,
-          timer: 2000,
-        });
-        history.push("/schools");
-        console.log(err);
-      });
-  }
-
   async function handleEdit() {
-    await axios
-      .put(`http://localhost:1337/api/schools/${match.params.id}`, {
-        data: {
-          name: name,
-          location: location,
-          contact: contact,
-        },
-      })
-      .then((response) => {
-        // Handle success.
-        swal({
-          title: "Success",
-          text: "School has been edited successfully!",
-          icon: "success",
-          button: false,
-          timer: 2000,
-        });
-        history.push(`/schools/${match.params.id}`);
-        console.log(response);
-      })
-      .catch((err) => {
-        // Handle error.
-        swal({
-          text: `An error occurred !`,
-          icon: "error",
-          button: false,
-          timer: 2000,
-        });
-        history.push(`/schools/${match.params.id}`);
-        console.log(err);
-      });
+
   }
 
   return (
