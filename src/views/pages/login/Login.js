@@ -46,7 +46,7 @@ const Login = () => {
                   <CForm onSubmit={handleSubmit} formNoValidate>
                     <h1>Login</h1>
                     <p className="text-muted">
-                      Sign In to your crayons account
+                      Enter Credentials to Login
                     </p>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
