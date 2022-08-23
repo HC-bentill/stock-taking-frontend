@@ -10,6 +10,7 @@ import {
 import CIcon from '@coreui/icons-react'
 import { useDispatch } from "react-redux";
 import { setLogout } from "../features/userSlice";
+import userIcon from '../assets/icons/user.png'
 
 const TheHeaderDropdown = () => {
   const dispatch = useDispatch();
@@ -29,9 +30,9 @@ const TheHeaderDropdown = () => {
       <CDropdownToggle className="c-header-nav-link" caret={false}>
         <div className="c-avatar">
           <CImg
-            src={'avatars/6.jpg'}
+            src={userIcon}
             className="c-avatar-img"
-            alt="admin@bootstrapmaster.com"
+            alt="user img"
           />
         </div>
       </CDropdownToggle>

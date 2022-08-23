@@ -1,41 +1,52 @@
-import React from 'react'
-import CIcon from '@coreui/icons-react'
-
 const _nav = [
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Dashboard',
-    to: '/dashboard',
-    icon: 'cilHome',
+    _tag: "CSidebarNavItem",
+    name: "Dashboard",
+    to: "/dashboard",
+    icon: "cilHome",
   },
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Zones',
-    to: '/zones',
-    icon: 'cilCalculator',
+    _tag: "CSidebarNavDropdown",
+    name: "Zones",
+    route: "/zones",
+    icon: "cilCalculator",
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "View Zones",
+        to: "/zones",
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Zone Detail Report",
+        to: "/zone-detail-report",
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "SKUs counted",
+        to: "/skus-counted",
+      },
+    ],
   },
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Fixtures',
-    to: '/fixtures',
-    icon: 'cilTags',
+    _tag: "CSidebarNavItem",
+    name: "Fixtures",
+    to: "/fixtures",
+    icon: "cilTags",
   },
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Users',
-    to: '/users',
-    icon: 'cil-user',
+    _tag: "CSidebarNavItem",
+    name: "Users",
+    to: "/users",
+    icon: "cil-user",
   },
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Settings',
-    to: '/settings',
-    icon: 'cilSettings',
+    _tag: "CSidebarNavItem",
+    name: "Settings",
+    to: "/settings",
+    icon: "cilSettings",
   },
-]
-
-
-  
+];
 
 // const _nav2 =  [
 //   {
@@ -345,4 +356,4 @@ const _nav = [
 //   }
 // ]
 
-export default _nav
+export default _nav;

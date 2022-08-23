@@ -15,7 +15,7 @@ import CIcon from "@coreui/icons-react";
 import swal from "sweetalert";
 import zoneData from "./zoneData";
 
-function View_schools() {
+const ZoneDetailReport = () => {
   const history = useHistory();
   const queryPage = useLocation().search.match(/page=([0-9]+)/, "");
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
@@ -26,7 +26,8 @@ function View_schools() {
   }, [currentPage, page]);
 
   const pageChange = (newPage) => {
-    currentPage !== newPage && history.push(`/zones?page=${newPage}`);
+    currentPage !== newPage &&
+      history.push(`/zone-detail-report?page=${newPage}`);
   };
 
   const getBadge = (status) => {
@@ -42,29 +43,25 @@ function View_schools() {
     }
   };
 
+  const fields = ["name", "supervisor", "range", "status",     {
+    key: 'action',
+    label: 'Action',
+    sorter: false,
+    filter: false
+  }];
+
   return (
     <>
       <CRow>
         <CCol sm={12} md={12}>
-          <CRow className="justify-content-end pr-5">
-            <CButton
-              to={"/add-zone"}
-              className="mb-4 p-2"
-              color="primary"
-              aria-pressed="true"
-            >
-              <CIcon size="sm" name="cil-pencil" />
-              <span className="mfs-2">Create Zone</span>
-            </CButton>
-          </CRow>
           <CCard>
             <CCardHeader>
-              <h4>Zones</h4>
+              <h4>Zone Detail Report</h4>
             </CCardHeader>
             <CCardBody>
               <CDataTable
                 items={zoneData}
-                fields={["name", "supervisor", "range", "status"]}
+                fields={fields}
                 hover
                 clickableRows
                 columnFilter
@@ -73,7 +70,6 @@ function View_schools() {
                 sorter
                 itemsPerPage={10}
                 activePage={page}
-                onRowClick={(item) => history.push(`/edit-zone/${item.id}`)}
                 scopedSlots={{
                   status: (item) => (
                     <td>
@@ -82,6 +78,23 @@ function View_schools() {
                       </CBadge>
                     </td>
                   ),
+                  action: (item, index) => {
+                    return (
+                      <td className="py-2">
+                        <CButton
+                          color="primary"
+                          variant="outline"
+                          shape="square"
+                          size="sm"
+                          onClick={() => {
+                            console.log("testing");
+                          }}
+                        >
+                          {"Clear Count"}
+                        </CButton>
+                      </td>
+                    );
+                  },
                 }}
               />
               <CPagination
@@ -96,6 +109,6 @@ function View_schools() {
       </CRow>
     </>
   );
-}
+};
 
-export default View_schools;
+export default ZoneDetailReport;

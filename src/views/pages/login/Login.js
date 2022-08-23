@@ -22,18 +22,16 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
 import { setLogin, setLogout } from "../../../features/userSlice";
 import './login.scss'
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const {register, handleSubmit, watch,formState: { errors },} = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(setLogin(true));
+  }
   // const history = useHistory();
   const dispatch = useDispatch();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    dispatch(setLogin(true));
-  };
 
   return (
     <div className="c-app c-default-layout flex-row align-items-center login_container">
@@ -43,7 +41,7 @@ const Login = () => {
             <CCardGroup>
               <CCard className="login_card" >
                 <CCardBody>
-                  <CForm onSubmit={handleSubmit} formNoValidate>
+                  <CForm onSubmit={handleSubmit(onSubmit)} formNoValidate>
                     <h1>Login</h1>
                     <p className="text-muted">
                       Enter Credentials to Login
@@ -54,15 +52,15 @@ const Login = () => {
                           <CIcon name="cil-user" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput
+                      <input
+                      className="LoginFormInput"
                         type="text"
                         placeholder="Username"
                         autoComplete="username"
                         id="username"
                         name="username"
-                        value={username}
-                        onChange={(e) => setUserName(e.target.value)}
                         required
+                        {...register("username")}
                       />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
@@ -71,15 +69,15 @@ const Login = () => {
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput
+                      <input
+                      className="LoginFormInput"
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
                         id="password"
                         name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
                         required
+                        {...register("password")}
                       />
                     </CInputGroup>
                     <CRow>

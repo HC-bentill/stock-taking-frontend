@@ -1,16 +1,12 @@
 import React from 'react';
-
-
-
-const Charts = React.lazy(() => import('./views/charts/Charts'));
-const Dashboard = React.lazy( () => import( './views/dashboard/Dashboard' ) );
-// zone
-const Zones = React.lazy( () => import( './views/zone/Zones' ) );
-const AddZone = React.lazy( () => import( './views/zone/AddZone' ) );
-const EditZone = React.lazy( () => import( './views/zone/EditZone' ) );
-
-// class
-const Class = React.lazy( () => import( './views/class/View_class' ) );
+import Charts from './views/charts/Charts';
+import Dashboard from './views/dashboard/Dashboard';
+import Zones from './views/zone/Zones';
+import AddZone from './views/zone/AddZone';
+import EditZone from './views/zone/EditZone';
+import Class from './views/class/View_class';
+import ZoneDetailReport from './views/zone/ZoneDetailReport';
+import SKUsCounted from './views/zone/SKUsCounted';
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -21,6 +17,9 @@ const routes = [
   { path: '/zones', name: 'Zones', component: Zones },
   { path: '/add-zone', name: 'Add Zone', component: AddZone },
   { path: '/edit-zone/:id', exact: true, name: 'Edit Zones', component: EditZone },
+  { path: '/zone-detail-report', exact: true, name: 'Zone Detail Report', component: ZoneDetailReport },
+  { path: '/skus-counted', exact: true, name: 'SKUs Counted', component: SKUsCounted },
+
 
   //class
   { path: '/class', name: 'Class', component: Class },

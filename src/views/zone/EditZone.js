@@ -1,99 +1,147 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
   CModal,
   CModalBody,
   CModalFooter,
   CModalHeader,
   CModalTitle,
+  CCol,
+  CRow,
+  CButton,
   CForm,
-  CInput,
   CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import swal from "sweetalert";
-import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert";
+import { useForm } from "react-hook-form";
 
-const School = ({ match }) => {
-  const [schoolData, setSchoolData] = useState({});
+function EditZone() {
   const [deleteModal, setDeleteModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [contact, setContact] = useState("");
   const history = useHistory();
 
-  useEffect(() => {}, []);
-
-  async function handleEdit() {
-
-  }
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
-      <CRow>
-        <CCol lg={6}>
-          <CCard className="p-4">
-            <h5>School id: {match.params.id}</h5>
-            <CCardBody>
-              <table className="table table-hover">
-                <tbody>
-                  <tr>
-                    <td>
-                      <strong>name: </strong>
-                      {schoolData.name}{" "}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <strong>Location: </strong> {schoolData.location}{" "}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <strong>Contact: </strong> {schoolData.contact}{" "}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </CCardBody>
-            <CRow>
-              <CCol md={6}>
-                <CButton
-                  onClick={() => setEditModal(!editModal)}
-                  className=""
-                  block
-                  color="primary"
-                  aria-pressed="true"
-                >
-                  <CIcon size="sm" name="cil-pencil" />
-                  <span className="mfs-2">Edit</span>
-                </CButton>
-              </CCol>
-              <CCol md={6}>
-                <CButton
-                  onClick={() => setDeleteModal(!deleteModal)}
-                  className=""
-                  block
-                  color="danger"
-                  aria-pressed="true"
-                >
-                  <CIcon size="sm" name="cil-pencil" />
-                  <span className="mfs-2">Delete</span>
-                </CButton>
-              </CCol>
-            </CRow>
-          </CCard>
-        </CCol>
-      </CRow>
+      <CForm onSubmit={handleSubmit(onSubmit)} formNoValidate>
+        <CRow>
+          <CCol md={4} sm={12}>
+            <label>Zone Name</label>
+            <CInputGroup className="mb-5">
+              <input
+                className="customFormInput"
+                type="text"
+                placeholder="Enter Zone Name"
+                required
+              />
+            </CInputGroup>
+          </CCol>
+          <CCol md={4} sm={12}>
+            <label>Zone Supervisor</label>
+            <CInputGroup className="mb-5">
+              <select className="customFormInput" required>
+                <option>Henry</option>
+                <option>John</option>
+                <option>Doe</option>
+              </select>
+            </CInputGroup>
+          </CCol>
+          <CCol md={4} sm={12}>
+            <label>Fixture Range</label>
+            <CInputGroup className="mb-5">
+              <CRow>
+                <CCol md={6} sm={6} xs={6}>
+                  <input
+                    className="customDoubleInput"
+                    type="text"
+                    placeholder="from"
+                    required
+                  />
+                </CCol>
+                <CCol md={6} sm={6} xs={6}>
+                  <input
+                    className="customDoubleInput"
+                    type="text"
+                    placeholder="to"
+                    required
+                  />
+                </CCol>
+              </CRow>
+            </CInputGroup>
+          </CCol>
+          <CCol md={4} sm={12}>
+            <label>Mobile Number</label>
+            <CInputGroup className="mb-5">
+              <input
+                className="customFormInput"
+                type="text"
+                placeholder="Enter Mobile Number"
+                required
+              />
+            </CInputGroup>
+          </CCol>
+          <CCol md={4} sm={12}>
+            <label>Zone Percentage Count</label>
+            <CInputGroup className="mb-5">
+              <CRow>
+                <CCol md={6} sm={6} xs={6}>
+                  <input
+                    className="customDoubleInput"
+                    type="text"
+                    placeholder="first count"
+                    required
+                  />
+                </CCol>
+                <CCol md={6} sm={6} xs={6}>
+                  <input
+                    className="customDoubleInput"
+                    type="text"
+                    placeholder="second count"
+                    required
+                  />
+                </CCol>
+              </CRow>
+            </CInputGroup>
+          </CCol>
+        </CRow>
+        <CRow>
+          <CCol md={2} sm={6} xs={6}>
+            <CButton
+              onClick={() => alert("dd")}
+              className=""
+              block
+              color="primary"
+              aria-pressed="true"
+            >
+              <CIcon size="sm" name="cil-pencil" />
+              <span className="mfs-2">Save</span>
+            </CButton>
+          </CCol>
+          <CCol md={2} sm={6} xs={6}>
+            <CButton
+              onClick={() => setDeleteModal(!deleteModal)}
+              className=""
+              block
+              color="danger"
+              aria-pressed="true"
+            >
+              <CIcon size="sm" name="cil-trash" />
+              <span className="mfs-2">Delete Zone</span>
+            </CButton>
+          </CCol>
+        </CRow>
+      </CForm>
+
       {/* ---------------------------------------------------------------------- */}
       {/* delete modal */}
       <CModal
@@ -110,87 +158,12 @@ const School = ({ match }) => {
           <strong>Are you sure you want to delete this record ?</strong>
         </CModalBody>
         <CModalFooter>
-          <CButton color="danger">
-            Confrim
-          </CButton>{" "}
+          <CButton color="danger">Confrim</CButton>{" "}
           <CButton onClick={() => setDeleteModal(!deleteModal)}>Cancel</CButton>
         </CModalFooter>
       </CModal>
-
-      {/* ---------------------------------------------------------------------- */}
-      {/* edit modal */}
-      <CModal
-        show={editModal}
-        onClose={() => setEditModal(!editModal)}
-        color="primary"
-      >
-        <CModalHeader closeButton>
-          <CModalTitle>
-            <strong>Edit School</strong>
-          </CModalTitle>
-        </CModalHeader>
-        <CModalBody className="p-4">
-          <CForm onSubmit={handleEdit} formNoValidate>
-            <CInputGroup className="mb-3">
-              <CInputGroupPrepend>
-                <CInputGroupText>
-                  <CIcon name="cil-home" />
-                </CInputGroupText>
-              </CInputGroupPrepend>
-              <CInput
-                type="text"
-                autoComplete="name"
-                id="name"
-                name="name"
-                placeholder={schoolData.name}
-                value={schoolData.name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </CInputGroup>
-            <CInputGroup className="mb-3">
-              <CInputGroupPrepend>
-                <CInputGroupText>
-                  <CIcon name="cil-LocationPin" />
-                </CInputGroupText>
-              </CInputGroupPrepend>
-              <CInput
-                type="text"
-                autoComplete="location"
-                id="location"
-                name="location"
-                placeholder={schoolData.location}
-                value={schoolData.location}
-                onChange={(e) => setLocation(e.target.value)}
-                required
-              />
-            </CInputGroup>
-            <CInputGroup className="mb-3">
-              <CInputGroupPrepend>
-                <CInputGroupText>
-                  <CIcon name="cil-phone" />
-                </CInputGroupText>
-              </CInputGroupPrepend>
-              <CInput
-                type="text"
-                autoComplete="contact"
-                id="contact"
-                name="contact"
-                placeholder={schoolData.contact}
-                value={schoolData.contact}
-                onChange={(e) => setContact(e.target.value)}
-                required
-              />
-            </CInputGroup>
-            <CButton onClick={() => handleEdit()} type="submit" color="primary">
-              Save
-            </CButton>{" "}
-            <CButton onClick={() => setEditModal(!editModal)}>Cancel</CButton>
-          </CForm>
-        </CModalBody>
-      </CModal>
     </>
   );
-};
+}
 
-export default School;
+export default EditZone;

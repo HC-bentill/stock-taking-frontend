@@ -39,8 +39,8 @@ const TheSidebar = () => {
           name="logo-negative"
           height={35}
         /> */}
-        <h4 className="c-sidebar-brand-full">Crayons</h4>
-        <h4 className="c-sidebar-brand-minimized"><strong>C</strong></h4>
+        <h4 className="c-sidebar-brand-full">ST-SW</h4>
+        <h4 className="c-sidebar-brand-minimized"><strong>ST</strong></h4>
         {/* <CIcon
           className="c-sidebar-brand-minimized"
           name="sygnet"

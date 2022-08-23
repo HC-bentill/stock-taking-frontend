@@ -1,39 +1,71 @@
 // Here you can add other styles
 body {
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: 300;
-    * {
-      font-family: Poppins !important;
-    }
-  } 
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
+  * {
+    font-family: Poppins !important;
+  }
+}
+
+.customFormInput {
+  width: 350px;
+  outline: none;
+  border: 1px solid #d8dbe0;
+  border-radius: 0px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.customDoubleInput{
+  width: 160px;
+  outline: none;
+  border: 1px solid #d8dbe0;
+  border-radius: 0px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.LoginFormInput {
+  width: 250px;
+  outline: none;
+  border: 1px solid #d8dbe0;
+  border-radius: 0px;
+  padding: 7px;
+}
+
 
 @font-face {
-    font-family: "Poppins";
-    src: local("Poppins"),
-      url(../assets/fonts/Poppins-Regular.ttf) format("truetype");
-  }
-  
-  @font-face {
-    font-family: "Poppins";
-    font-weight: bold;
-    src: local("Poppins"),
-      url(../assets/fonts/Poppins-Bold.ttf) format("truetype");
-  }
-  
-  @font-face {
-    font-family: "Poppins";
-    font-weight: 500;
-    src: local("Poppins"),
-      url(../assets/fonts/Poppins-Medium.ttf) format("truetype");
-  }
+  font-family: "Poppins";
+  src: local("Poppins"),
+    url(../assets/fonts/Poppins-Regular.ttf) format("truetype");
+}
 
-  @font-face {
-    font-family: "Poppins";
-    font-weight: lighter;
-    src: local("Poppins"),
-      url(../assets/fonts/Poppins-Light.ttf) format("truetype");
-  }
-  
+@font-face {
+  font-family: "Poppins";
+  font-weight: bold;
+  src: local("Poppins"),
+    url(../assets/fonts/Poppins-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-weight: 500;
+  src: local("Poppins"),
+    url(../assets/fonts/Poppins-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-weight: lighter;
+  src: local("Poppins"),
+    url(../assets/fonts/Poppins-Light.ttf) format("truetype");
+}
+
+@media only screen and (max-width: 1000px){
+
+}

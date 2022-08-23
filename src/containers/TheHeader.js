@@ -68,7 +68,7 @@ const TheHeader = () => {
         onClick={toggleSidebar}
       />
       <CHeaderBrand className="mx-auto d-lg-none" to="/">
-        <h4 className="c-sidebar-brand-full">Crayons</h4>
+        <h4 className="c-sidebar-brand-full"><strong>ST-SW</strong></h4>
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
@@ -84,9 +84,9 @@ const TheHeader = () => {
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        <TheHeaderDropdownNotif/>
+        {/* <TheHeaderDropdownNotif/>
         <TheHeaderDropdownTasks/>
-        <TheHeaderDropdownMssg/>
+        <TheHeaderDropdownMssg/> */}
         <TheHeaderDropdown/>
       </CHeaderNav>
 
